@@ -3326,20 +3326,20 @@
   };
   d3.interpolateObject = function(a, b) {
     var i = {}, c = {}, k;
-    for (a && k in a) {
-      if (b && k in b) {
+    for (k in a) {
+      if (b && (k in b)) {
         i[k] = d3_interpolateByName(k)(a[k], b[k]);
       } else {
         c[k] = a[k];
       }
     }
-    for (b && k in b) {
-      if (!(a && k in a)) {
+    for (k in b) {
+      if (!(a && ( k in a)) ) {
         c[k] = b[k];
       }
     }
     return function(t) {
-      for (i && k in i) c[k] = i[k](t);
+      for (k in i) c[k] = i[k](t);
       return c;
     };
   };
